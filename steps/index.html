@@ -6,78 +6,634 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steps</title>
-    <style>
+    <script type="text/javascript" src="./ydui.flexible.js"></script>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./swiper-4.5.0/css/swiper.min.css" />
+    <style type="text/css">
+        body {
+            background: #fff;
+            position: relative;
+            width: 7.5rem;
+            margin: 0 auto;
+            border: 1px solid red;
+        }
+
+        /**core-literacy**/
+
+        .core-literacy {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            margin: 0 .3rem;
+        }
+
+        .core-literacy h2 {
+            color: #4D5663;
+            font-size: .4rem;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+
+        .core-container {
+            display: flex;
+        }
+
+        .core-container h3 {
+            font-size: .3rem;
+            font-weight: 500;
+            color: #9BA1AD;
+        }
+
+        .core-right {
+            width: 100%;
+            padding-left: .2rem;
+        }
+
+        .core-right .core-image {
+            width: 100%;
+            text-align: center;
+            margin-top: .12rem;
+            margin-bottom: .45rem;
+        }
+
+        .core-right .core-image img {
+            width: 4.19rem;
+            margin-left: -.36rem;
+        }
+
         /* 进度条 */
         /* 创建步骤数字计数器 */
         .steps {
+            list-style-type: none;
+            padding-inline-start: 0;
             position: relative;
-            margin-bottom: 30px;
             counter-reset: step;
             background: #fff;
-            margin: 5px 0;
             overflow: hidden;
-            margin-left: -46px;
+            width: .26rem;
+            margin-top: .11rem;
         }
 
         /* 步骤描述 */
         .steps li {
             list-style-type: none;
-            font-size: 14px;
             text-align: center;
-            width: 20%;
             position: relative;
-            float: left;
-            height: 40px;
-            line-height: 40px;
-            padding: 10px 0;
         }
 
-        /* 步骤数字 *
+        .steps li:nth-child(1) {
+            height: 5.25rem;
+        }
+
+        /* 步骤数字 **/
         .steps li:before {
             display: block;
             content: counter(step);
             /* 设定计数器内容 */
             counter-increment: step;
             /* 计数器值递增 */
-            width: 10px;
-            height: 10px;
-            background-color: #ccc;
-            line-height: 10px;
-            border-radius: 10px;
-            font-size: 0;
+            width: .22rem;
+            height: .22rem;
+            border-radius: .11rem;
+            font-size: 0px;
             color: #fff;
             text-align: center;
             font-weight: 600;
-            margin: 0 auto 9px auto;
+            margin: 0 auto;
+            background-color: #6FB92C;
+            z-index: 2;
+            box-shadow: 0 0 0 .07rem #d3e8bf inset;
         }
 
         /* 连接线 */
-        .steps li~li:after {
+        .steps li:not(:last-child):after {
             content: '';
-            width: 100%;
-            height: 3px;
-            background-color: #ccc;
-            position: absolute;
-            left: -48%;
-            top: 14px;
+            width: 1px;
+            height: 5.03rem;
+            background-color: #6FB92C;
             z-index: 0;
+            position: absolute;
+            /* top: 5px; */
+            left: .12rem
         }
 
-        /* 将当前/完成步骤之前的数字及连接线变绿 */
-        .steps li.active:before,
-        .steps li.active:after {
-            background-color: #6fb1bd;
+        .steps li:nth-child(2) {
+            height: 2.41rem;
+        }
+
+        .steps li:nth-child(2):after {
+            height: 2.19rem;
+        }
+
+        .part-2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.1rem;
+            width: 6.42rem;
+            text-align: center;
+            background: #FFFFFF;
+            box-shadow: 0 .06rem .2rem 0 #F0EFFD;
+            border-radius: .1rem;
+            margin-top: .24rem;
+            margin-bottom: .64rem;
+        }
+
+        .part-2 li {
+            display: inline-block;
+            width: 1.14rem;
+            height: .7rem;
+            line-height: .7rem;
+            background: #F2F3F7;
+            border-radius: .1rem;
+            font-size: .24rem;
+            color: #838C93;
+        }
+
+        .part-3 {
+            margin-top: .37rem;
+        }
+
+        .part-3 .item {
+            margin-bottom: .2rem;
+            width: 6.42rem;
+            height: 1.68rem;
+            background: #FFFFFF;
+            padding: .22rem .18rem;
+            box-shadow: 0px .06rem .2rem 0px #F0EFFD;
+            border-radius: .1rem;
+            color: #838C93;
+            font-size: .24rem;
+        }
+
+        .part-3 .item h3 {
+            color: #6FB92C;
+            padding-bottom: .14rem;
+        }
+
+        /***four-modules***/
+
+        .four-modules {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            background: #FAFAFC;
+        }
+
+        .four-modules .title {
+            margin-bottom: .4rem;
+            text-align: center;
+        }
+
+        .four-modules .title h2 {
+            font-size: .4rem;
+            font-weight: 6000;
+            color: #4D5663;
+        }
+
+        .four-modules .title p {
+            font-size: .24rem;
+            color: #AEB3BF;
+        }
+
+        .four-modules .modules-wrap {
+            /* width: 100%; */
+            overflow: hidden;
+        }
+
+        .four-modules .modules-internal {
+            position: relative;
+            width: 100%;
+            display: flex;
+        }
+
+        .four-modules .swiper-wrapper .item {
+            display: inline-block;
+            width: 2.85rem;
+            height: 4.47rem;
+            background: #FFFFFF;
+            box-shadow: 0 .06rem .2rem 0 #F0EFFD;
+            border-radius: .2rem;
+            padding: .64rem .2rem 0 .2rem;
+
+        }
+
+        .four-modules .swiper-wrapper .item h3 {
+            font-size: .32rem;
+            font-weight: 500;
+            color: #6FB92C;
+            text-align: center;
+            margin-top: .1rem;
+            margin-bottom: .15rem;
+        }
+
+        .four-modules .swiper-wrapper .item p {
+            font-size: .24rem;
+            color: #838C93;
+            line-height: .43rem;
+        }
+
+        .four-modules .swiper-slide {
+            position: relative;
+            padding-top: .64rem;
+        }
+
+        .four-modules .tool {
+            height: 1.28rem;
+            width: 1.28rem;
+            position: absolute;
+            top: 0rem;
+            left: .785rem;
+
+        }
+
+        .four-modules .tool-icon1 {
+            background: url('./images/tool-icon1.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .four-modules .tool-icon2 {
+            background: url('./images/tool-icon2.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .four-modules .tool-icon3 {
+            background: url('./images/tool-icon3.png') no-repeat;
+            background-size: 100%;
+        }
+
+        .four-modules .tool-icon4 {
+            background: url('./images/tool-icon4.png') no-repeat;
+            background-size: 100%;
+        }
+
+        /**service-system**/
+        .service-system {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            width: 6.7rem;
+            margin: 0 auto;
+        }
+
+        .service-system h2 {
+            color: #4D5663;
+            font-size: .4rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: .5rem;
+        }
+
+        .service-system .item {
+            display: flex;
+            height: 1.1rem;
+            margin-bottom: .1rem;
+        }
+
+        .service-system .item>div {
+            width: 1.74rem;
+            height: 100%;
+            background: #CFF5B6;
+            border-radius: .2rem 0 0 .2rem;
+            opacity: 0.5;
+            font-size: .24rem;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.1rem;
+            margin-right: .1rem;
+        }
+
+        .service-system .item>p {
+            display: flex;
+            align-items: center;
+            width: 4.86rem;
+            height: 100%;
+            background: #F7F8FB;
+            border-radius: 0 .2rem .2rem 0;
+            font-size: .22rem;
+            color: #4D5663;
+            line-height: .38rem;
+            padding: 0 .2rem;
+        }
+
+        .demo {
+            margin-bottom: 3rem;
+            background: #FAFAFC;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        /**teacher-part**/
+        .teacher-part {
+            width: 100%;
+        }
+
+        .teacher-part .content {
+            width: 100%;
+            height: 7.06rem;
+            background-color: #6FB92C;
+            padding-top: 1rem;
+        }
+
+        .teacher-part .content .title {
+            font-size: .4rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            text-align: center;
+            padding-bottom: .5rem;
+        }
+
+        .teacher-part .bottom {
+            width: 100%;
+            height: .99rem;
+            background: url('./images/teacher-bottom-bg.png') no-repeat;
+            background-size: 100%;
+            margin-top: -1px;
+        }
+
+        .teacher-part .swiper-slide {
+            padding-left: .2rem;
+        }
+
+        .teacher-part .swiper-slide .slide-teacher1 {
+            width: 7.97rem;
+            height: 4.5rem;
+            background: url('./images/teacher-bg-1.png') no-repeat;
+            background-size: 100%;
+            position: relative;
+        }
+
+        .teacher-part .swiper-slide .slide-teacher2 {
+            width: 7.97rem;
+            height: 4.5rem;
+            background: url('./images/teacher-bg-2.png') no-repeat;
+            background-size: 100%;
+            position: relative;
+        }
+
+        .teacher-part .slide-wrapper {
+            width: 3.6rem;
+            position: absolute;
+            top: .6rem;
+            left: 3.24rem;
+            overflow: hidden;
+        }
+
+        .teacher-part .slide-wrapper h4{
+            font-size: .36rem;
+            font-weight: 500;
+            color: #4D5663;
+        }
+
+        .teacher-part .slide-wrapper p{
+            font-size: .24rem;
+            font-weight: 400;
+            color: #707785;
+            line-height: .32rem;
+        }
+
+        .teacher-part .slide-wrapper .item-tags{
+            margin-top: .08rem;
+            margin-bottom: .4rem;
+        }
+
+        .teacher-part .slide-wrapper .item-tags span{
+            width: 1.20rem;
+            height: .32rem;
+            background: #FFDF5C;
+            border-radius: .04rem;
+            font-size: .24rem;
+            color: #83663B;
+            padding: .04rem .12rem;
+        }
+
+        #swiper-teacher {
+            height: 5.16rem;
+        }
+
+        #swiper-teacher .swiper-pagination-bullet-active {
+            background: #8DCE45;
+        }
+
+        #swiper-teacher .swiper-pagination-bullet {
+            background: #fff;
         }
     </style>
 </head>
 
 <body>
-    <ul class="steps">
-        <li class="active"></li>
-        <li class="active"></li>
-        <li></li>
-        <li></li>
-    </ul>
+    <div class="core-literacy">
+        <h2>传承核心素养，培养关键能力</h2>
+        <div class="core-container">
+            <ul class="steps">
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+
+            <div class="core-right">
+                <h3>核心素养模块</h3>
+                <div class="core-image"><img src="./images/core-literacy.png" /></div>
+                <h3>五大素质课程</h3>
+                <div class="part-2">
+                    <ul>
+                        <li>豌豆编程</li>
+                        <li>豌豆口才</li>
+                        <li>豌豆益智</li>
+                        <li>音乐审美</li>
+                        <li>美术素养</li>
+                    </ul>
+                </div>
+                <h3>豌豆益智五项关键能力</h3>
+                <div class="part-3">
+                    <div class="item">
+                        <h3>逻辑推理能力</h3>
+                        <p>分析事物或现象内在的逻辑关系从而推理出符合逻辑的结论的能力。</p>
+                    </div>
+                    <div class="item">
+                        <h3>实践创新能力</h3>
+                        <p>在实践、探索等方面体现出来的探索精神、实践能力、创新意识和创新思维。</p>
+                    </div>
+                    <div class="item">
+                        <h3>生活应用能力</h3>
+                        <p>探究生活中知识的本源，并在生活中进行方法应用和迁移。</p>
+                    </div>
+                    <div class="item">
+                        <h3>策略分析能力</h3>
+                        <p>通过观察分析，快速找到解决问题的突破口，灵活地运用适当的策略解决问题。</p>
+                    </div>
+                    <div class="item">
+                        <h3>空间感知能力</h3>
+                        <p>对事物大小、深度与距离等的空间感知能力，二维图形与三维空间的转换、想象的能力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="four-modules">
+        <div class="title">
+            <h2>全新改版四大内容模块</h2>
+            <p>激发兴趣 - 独立思考 - 实践创新</p>
+        </div>
+        <div id="swiper-modules" class="swiper-container swiper-image">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="tool tool-icon1"></div>
+                    <div class="item">
+                        <h3>思考工具</h3>
+                        <p>以思维可视化工具和思维策略工具的学习与应用为重点，提升学生思维逻辑的缜密性，引导学生综合分析和科学决策。</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item">
+                        <div class="tool tool-icon2"></div>
+                        <h3>基础能力</h3>
+                        <p>培养学生记忆力、专注力、观察力等在内的多种基础学习能力。</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item">
+                        <div class="tool tool-icon3"></div>
+                        <h3>益智策略</h3>
+                        <p>以各类益智思维游戏为载体，在探索和挑战中厘清思路，总结思考策略，帮助学生把各类思维模式迁移应用到学习和生活中。</p>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item">
+                        <div class="tool tool-icon4"></div>
+                        <h3>问题实践</h3>
+                        <p>融合人文历史、生命科学、自然与社会等问题情境，以项目分析与方案设计的形式提高学生问题解决和实践创新的能力。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-system">
+        <h2>学员服务体系</h2>
+        <div class="item">
+            <div>课程总结</div>
+            <p>课后随时回顾视频总结，轻松了解课堂中的学习要点</p>
+        </div>
+        <div class="item">
+            <div>学习报告</div>
+            <p>每节课后学习报告实时生成，孩子学习表现数据化呈现</p>
+        </div>
+        <div class="item">
+            <div>家长课堂</div>
+            <p>家庭教育以及思维训练方法的指导，快乐分享最新教育资讯</p>
+        </div>
+        <div class="item">
+            <div>家长指导视频</div>
+            <p>每节课匹配指导视频，家长课后指导无压力</p>
+        </div>
+        <div class="item">
+            <div>课程回放</div>
+            <p>下课后，系统生成课程回放，方便孩子和家长快捷回顾</p>
+        </div>
+        <div class="item">
+            <div>家长监课</div>
+            <p>家长能实时看到孩子上课时最自然的表现情况</p>
+        </div>
+    </div>
+
+    <div class="teacher-part">
+        <div class="content">
+            <h3 class="title">高标准 严考核 录取更优质老师</h3>
+            <div id="swiper-teacher" class="swiper-container swiper-image">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="slide-teacher1">
+                            <div class="slide-wrapper">
+                                <h4>焦焦老师</h4>
+                                <div class="item-tags">
+                                    <span>3年教龄</span>
+                                    <span>早期教育指导证书</span>
+                                </div>
+                                <p>
+                                    性格活泼开朗，富有爱心，亲和力强，课堂把控能力强。在教学上秉承着“玩中学，学中玩”的理念，并善于用爱心，耐心去引导宝贝，让宝贝可以勇敢去探索，去学习，非常受孩子欢迎。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-teacher2">
+                            <div class="slide-wrapper">
+                                <h4>西米老师</h4>
+                                <div class="item-tags">
+                                    <span>3年教龄</span>
+                                    <span>心理咨询师证书</span>
+                                </div>
+                                <p>
+                                    三年多的幼小教学经验，课堂氛围活跃，脉络清晰，循序渐进，善于使用正面鼓励的方式引导孩子，严柔并济，注重孩子习惯养成，引导孩子自主思考、主动表达，真正让孩子爱上学习，轻松学习。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="bottom"></div>
+    </div>
+
+    <div class="demo">
+        <div id="swiper-modules" class="swiper-container swiper-image">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="item1">
+                        <h3>思考工具</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item1">
+                        <h3>思考工具</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item1">
+                        <h3>思考工具</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item1">
+                        <h3>思考工具</h3>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="item1">
+                        <h3>思考工具</h3>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </body>
+
+<script type="text/javascript" src="./public/js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="./swiper-4.5.0/js/swiper.min.js"></script>
+<script type="text/javascript">
+
+    var swiper = new Swiper('#swiper-teacher', {
+        slidesPerView: 1,
+        // freeMode: true,
+        freeModeMinimumVelocity: 0.05,
+        spaceBetween: 80,
+        // slidesOffsetBefore: 24
+        pagination: {
+            el: '.swiper-pagination',
+        }
+
+    });
+
+    var swiper = new Swiper('#swiper-modules', {
+        slidesPerView: 2.4,
+        freeMode: true,
+        freeModeMomentumRatio: 4,
+        freeModeMinimumVelocity: 0.05,
+        spaceBetween: 20,
+        slidesOffsetBefore: 24
+    });
+
+</script>
 
 </html>
